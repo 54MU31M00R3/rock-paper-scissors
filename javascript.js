@@ -19,3 +19,21 @@ function getHumanChoice(){
         : undefined;
     return choice;
 }
+
+function playRound(){
+    const computerChoice = getComputerChoice()
+    const humanChoice = getHumanChoice()
+
+    if (humanChoice === computerChoice){
+        console.log(`Tie! Human: ${humanChoice}, Computer: ${computerChoice}`)
+    } else if ((humanChoice === "rock" && computerChoice === "scissors")
+        || (humanChoice === "paper" && computerChoice === "rock")
+        || (humanChoice === "scissors" && computerChoice === "paper")) {
+        console.log(`Congrats you won! ${humanChoice} beats ${computerChoice}`)
+        ++humanScore;
+    } else {
+        console.log(`Sorry, you lost! ${computerChoice} beats ${humanChoice}`)
+        ++computerScore
+    }
+    
+}
