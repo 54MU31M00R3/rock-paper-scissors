@@ -6,3 +6,13 @@ function getComputerChoice(){
         : "paper";
     return choice;
 }
+
+function getHumanChoice(){
+    let choice = prompt("Rock... Paper... Scissors... Shoot!")
+    choice = choice.toLowerCase()
+    choice = choice === "rock" ? "rock"
+        : choice === "scissors" ? "scissors"
+        : choice === "paper" ? "paper"
+        : undefined
+    return choice
+}
