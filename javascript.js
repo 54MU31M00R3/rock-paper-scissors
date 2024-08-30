@@ -21,19 +21,35 @@ function getHumanChoice(){
 }
 
 function playRound(){
-    const computerChoice = getComputerChoice()
-    const humanChoice = getHumanChoice()
+    const computerChoice = getComputerChoice();
+    const humanChoice = getHumanChoice();
 
     if (humanChoice === computerChoice){
-        console.log(`Tie! Human: ${humanChoice}, Computer: ${computerChoice}`)
+        console.log(`Tie! Human: ${humanChoice}, Computer: ${computerChoice}`);
     } else if ((humanChoice === "rock" && computerChoice === "scissors")
         || (humanChoice === "paper" && computerChoice === "rock")
         || (humanChoice === "scissors" && computerChoice === "paper")) {
-        console.log(`Congrats you won! ${humanChoice} beats ${computerChoice}`)
+        console.log(`Congrats, you won! ${humanChoice} beats ${computerChoice}`);
         ++humanScore;
     } else {
-        console.log(`Sorry, you lost! ${computerChoice} beats ${humanChoice}`)
-        ++computerScore
+        console.log(`Sorry, you lost! ${computerChoice} beats ${humanChoice}`);
+        ++computerScore;
     }
     
+}
+
+function playGame(){
+    for (i = 1; i <= 5; i++){
+        playRound();
+    }
+    if (humanScore > computerScore) {
+        console.log(`Congrats you won the whole game! Human: ${humanScore}, Computer: ${computerScore}`);
+    } else if (humanScore < computerScore) {
+        console.log(`Sorry you lost the whole game! Human: ${humanScore}, Computer: ${computerScore}`);
+    } else {
+        console.log(`Looks like you tied! Human: ${humanScore}, Computer: ${computerScore}`);
+    }
+    
+    humanScore = 0;
+    computerScore = 0;
 }
