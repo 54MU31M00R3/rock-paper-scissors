@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
     let choice;
     let value = Math.floor(Math.random() * 3) + 1;
@@ -8,11 +11,11 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let choice = prompt("Rock... Paper... Scissors... Shoot!")
-    choice = choice.toLowerCase()
+    let choice = prompt("Rock... Paper... Scissors... Shoot!");
+    choice = choice.toLowerCase();
     choice = choice === "rock" ? "rock"
         : choice === "scissors" ? "scissors"
         : choice === "paper" ? "paper"
-        : undefined
-    return choice
+        : undefined;
+    return choice;
 }
