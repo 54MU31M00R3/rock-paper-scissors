@@ -1,10 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
-const gameOutcome = document.createElement("p");
+let gameCounter = 0;
 const score = document.createElement("p");
 const scoreBoard = document.querySelector("#scoreBoard");
 
-scoreBoard.appendChild(gameOutcome)
 scoreBoard.appendChild(score)
 
 function getComputerChoice(){
@@ -28,6 +27,8 @@ function getHumanChoice(){
 
 function playRound(humanChoice){
     const computerChoice = getComputerChoice();
+    const gameOutcome = document.createElement("p");
+    scoreBoard.appendChild(gameOutcome);
 
     if (humanChoice === computerChoice){
         console.log(`Tie! Human: ${humanChoice}, Computer: ${computerChoice}`);
@@ -69,14 +70,40 @@ humanChoice.addEventListener('click', (event) => {
     let target = event.target;
 
     switch(target.id) {
-        case 'rock':
-            playRound(target.id);
-            break;
-        case 'paper':
-            playRound(target.id);
-            break;
-        case 'scissors':
-            playRound(target.id)
-            break;
+    case 'rock':
+        playRound(target.id);
+        break;
+    case 'paper':
+        playRound(target.id);
+        break;
+    case 'scissors':
+        playRound(target.id)
+        break;
     }
-})
+    ++gameCounter;
+    
+    if (gameCounter === 5){
+        const gameOutcome = document.createElement("p");
+        scoreBoard.appendChild(gameOutcome);
+
+        if (humanScore > computerScore) {
+            console.log(`Congrats you won the whole game! Human: ${humanScore}, Computer: ${computerScore}`);
+            gameOutcome.textContent = "Congrats you won the whole game!"
+        } else if (humanScore < computerScore) {
+            console.log(`Sorry you lost the whole game! Human: ${humanScore}, Computer: ${computerScore}`);
+            gameOutcome.textContent = "Sorry you lost the whole game!"
+        } else {
+            console.log(`Looks like you tied! Human: ${humanScore}, Computer: ${computerScore}`);
+            gameOutcome.textContent = "Looks like you tied the game!"
+        }
+        
+        score.textContent = `Human Score: ${humanScore}, Computer Score: ${computerScore}`;
+
+        humanScore = 0;
+        computerScore = 0;
+        gameCounter= 0;
+    }
+        
+    }
+    
+)
