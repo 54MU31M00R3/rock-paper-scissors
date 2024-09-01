@@ -48,26 +48,20 @@ function playRound(humanChoice){
     
 }
 
-function playGame(){
-    for (i = 1; i <= 5; i++){
-        playRound();
+function removeChildren(parent){
+    while (parent.firstChild && (parent.childElementCount != 1)){
+        parent.removeChild(parent.lastChild)
     }
-    if (humanScore > computerScore) {
-        console.log(`Congrats you won the whole game! Human: ${humanScore}, Computer: ${computerScore}`);
-    } else if (humanScore < computerScore) {
-        console.log(`Sorry you lost the whole game! Human: ${humanScore}, Computer: ${computerScore}`);
-    } else {
-        console.log(`Looks like you tied! Human: ${humanScore}, Computer: ${computerScore}`);
-    }
-    
-    humanScore = 0;
-    computerScore = 0;
 }
 
 const humanChoice = document.querySelector('#humanChoice');
 
 humanChoice.addEventListener('click', (event) => {
     let target = event.target;
+
+    if(gameCounter === 0 ){
+        removeChildren(scoreBoard);
+    }
 
     switch(target.id) {
     case 'rock':
