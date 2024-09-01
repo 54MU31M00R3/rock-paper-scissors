@@ -20,9 +20,8 @@ function getHumanChoice(){
     return choice;
 }
 
-function playRound(){
+function playRound(humanChoice){
     const computerChoice = getComputerChoice();
-    const humanChoice = getHumanChoice();
 
     if (humanChoice === computerChoice){
         console.log(`Tie! Human: ${humanChoice}, Computer: ${computerChoice}`);
@@ -53,3 +52,21 @@ function playGame(){
     humanScore = 0;
     computerScore = 0;
 }
+
+const humanChoice = document.querySelector('#humanChoice');
+
+humanChoice.addEventListener('click', (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case 'rock':
+            playRound(target.id);
+            break;
+        case 'paper':
+            playRound(target.id);
+            break;
+        case 'scissors':
+            playRound(target.id)
+            break;
+    }
+})
