@@ -1,5 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
+const score = document.createElement("p");
+const scoreBoard = document.querySelector("#scoreBoard");
+
+scoreBoard.appendChild(score)
 
 function getComputerChoice(){
     let choice;
